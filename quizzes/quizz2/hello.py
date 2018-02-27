@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import request
+from flask import jsonify
 import json
 
 app = Flask(__name__)
@@ -18,13 +19,13 @@ def new_users():
     name_object = {"id":id,"name":name}
     id= id+1
     users.append(name_object)
-    return json.dumps(name_object, indent=4) + "\n", 201
+    return jsonify(name_object), 201
 
 @app.route('/users/<int:id>', methods=['GET'])
 def get_users(id):
     name_object = next((user for user in users if user["id"] == id), False)
     if(name_object):
-        return json.dumps(name_object, indent=4) + "\n", 200
+        return jsonify(name_object), 200
     # if id doesn't exist return 404
     return "\n", 404
 
