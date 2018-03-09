@@ -22,7 +22,7 @@ def receiving():
     while True:
         message= sock.recv().decode()
         if message.find("["+ME+"]:") != 0:
-            print("\n"+message+"["+ME+"]>", end="")
+            print("\n"+message+"\n["+ME+"]>", end="")
             
 
 print("User["+ME+"] Connected to the chat server.")
